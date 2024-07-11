@@ -1,0 +1,112 @@
+$primary: rgb(34, 34, 34);
+$secondary: rgb(50, 50, 228);
+$light: white;
+$secondaryLight:rgb(63, 63, 225);
+.homePage{
+    min-height: 100vh;
+    background-color: $primary;
+    color:$light;
+    overflow: hidden;
+    .section{
+        display: flex;
+    }
+    .Navbar{
+        color:$light;
+        display: flex;
+        background-color: $secondary;
+        padding:0rem 2rem;
+        justify-content:space-between;
+        font-size: 1.4rem;
+        align-items: center;
+       img{
+        height:4rem;
+        width:4rem;
+        border-radius:50%;
+        cursor:pointer;
+       }
+       .navComponent{
+        cursor:pointer;
+        color:$light;
+        text-decoration:none;
+       }
+    }
+    .sidebar{
+        height:90vh;
+        width:20vw;
+        position:relative;
+        background-color: $secondaryLight;
+    }
+    .registerFormContainer{
+        height: 90vh;
+        width:100%;
+        display: flex;
+        flex-direction:column;
+        justify-content: center;
+        align-items: center;
+        .form{
+            height:30rem;
+            width:30rem;
+            font-size: 1.2rem;
+            background-color: $light;
+            color:$primary;
+            display: flex;
+            flex-direction: column;            
+            justify-content: space-evenly;
+            align-items: center;
+            .inputComponent{
+                width:13vw;
+                height:5vh; 
+                padding:0.5rem;
+                border-radius:4px;
+            }
+            .submit{
+                height: 2rem;
+                width: 6rem;
+                color:$light;
+                border-radius:6px;
+                background-color:$secondary;
+                &:hover{
+                    background-color:$secondaryLight;
+                    cursor:pointer;
+                }
+            }
+        }
+    }
+    .chatContainer{
+        .chatDisplay{
+            height:80vh;
+
+        }
+        .inputContainer{
+            display: flex;
+            padding:0.5rem;
+            position:relative;
+            bottom:2vh;
+            height:10vh;
+            gap:.5rem;
+            #messageInput{
+                padding:0.5rem;
+                height:7vh;
+                font-size:1.03rem;
+                width:70vw;
+                border-radius:6px;
+                border:none;
+                color:white;
+                background-color:rgb(25, 25, 25);
+                outline: none;
+            }
+            #sendButton{
+                width:6vw;
+                color:$light;
+                border-radius:5px;
+                background-color: $secondary;
+                border:none;
+                height:7vh;
+                cursor:pointer;
+                &:hover{
+                    background-color: $secondaryLight;
+                }
+            }
+        }
+    }
+}
