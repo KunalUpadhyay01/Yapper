@@ -2,15 +2,25 @@ import React, {useState} from 'react';
 import Layout from '../Components/Layout';
 import Input from '../Components/Input';
 import { NavLink, useNavigate } from 'react-router-dom';
+import { useAuth } from '../context/auth';
 import axios from 'axios'
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('')
+  const [ auth, setAuth ] = useAuth()
   const navigate = useNavigate()
+
     const handleSubmit = async(e) =>{
       e.preventDefault()
       const res = await axios.post('http://localhost:3001/api/signin',{email,password})
+      console.log(res.data)
       if(res.data.success){
+        setAuth({
+          ...auth,
+          user: res.data.user,
+          token: res.data.token
+        })
+        localStorage.setItem('auth', res.data)
         navigate('/')
       }else{
         navigate('/signin')

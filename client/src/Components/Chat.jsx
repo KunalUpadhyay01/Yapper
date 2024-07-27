@@ -1,23 +1,27 @@
 import React,{useState, useEffect} from 'react'
 import Input from './Input'
+import { useAuth } from '../context/auth'
 const Chat = () => {
 
 // Use State HOOKS -------------------------------------------------------
   const [text,setText] = useState('')
   const [message,setMessage] = useState('')
-  
+  const [chat, setChat] = useState('')
+  const [auth, setAuth] = useAuth()
 //------------------- Onclick Button Function -------------------------------
 var array = []
 const sendMessage = () =>{
   const Text = document.getElementById('messageInput').value
-  array.push(Text)
-  console.log(array)
-  setMessage(message + array);
+  setMessage(Text)
   setText('')
 }
+
 // ------------------------------------------- Enter Key Function -------------------
 
 useEffect(()=>{
+  setAuth({
+    ...auth,
+  })
   const messageInput = document.getElementById('messageInput');
   messageInput.addEventListener('keydown',(e)=>{
   const button = document.getElementById('sendButton');
@@ -30,8 +34,9 @@ useEffect(()=>{
 
   return (
     <div className='chatContainer'>
-      <main className='chatDisplay'>
-          {message}
+      <main className='chatDisplay' id='chatDisplay'>
+        {JSON.stringify(auth)}
+        {message}
       </main>
       <div className="inputContainer">
         <Input type='text' autoFocus={true} id ='messageInput' classname='messageInput' value={text} onChange={e=> setText(e.target.value)} placeholder='Enter message'/>

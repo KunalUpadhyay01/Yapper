@@ -32,36 +32,40 @@ const Register = async(req,res)=>{
         })
     }
 }
-const signIn = async(req,res)=>{
+const signIn = async (req,res) =>{
        const {email, password} = req.body
        try{
+        //Finding User
            const User = await UserModel.findOne({email})
            console.log(User)
-        //    const token = JWT.sign({ _id: User._id }, process.env.JWT, {
-        //     expiresIn: "7d",
-        //   });
-        if(!User){
-            res.status(404).send({
-                message:"User not found",
-                success:false,
+           if(!User){
+               res.status(404).send({
+                   message:"User not found",
+                   success:false,
             })}
-        const encryptComparison = await comparePassword(password ,User.password)
-        if(!encryptComparison){
-            res.status(401).send({
-                message:"Incorrect password",
-                success:false,
-            })
-        }
 
+        //Password comparison
+            const encryptComparison = await comparePassword(password ,User.password)
+            if(!encryptComparison){
+                res.status(401).send({
+                    message:"Incorrect password",
+                    success:false,
+                })
+            }
+            const token = await JWT.sign({ _id: User._id }, 'Hello', {
+                        expiresIn: "7d",});
+            console.log(token)
+
+
+        // if User found with correct password
         res.status(200).send({
             success:true,
             message:"login successful",
             user:{
                 name: User.name,
                 email:User.email,
-                password: User.password
             },
-            // token
+            token
         })
        }catch(error){
         console.log(error)
