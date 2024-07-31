@@ -12,15 +12,15 @@ const Login = () => {
 
     const handleSubmit = async(e) =>{
       e.preventDefault()
-      const res = await axios.post('http://localhost:3001/api/signin',{email,password})
-      console.log(res.data)
-      if(res.data.success){
+      const res = await axios.post('http://localhost:4000/api/signin',{email,password})
+      console.log(res.data.user.email)
+      if(res && res.data.success){
         setAuth({
           ...auth,
           user: res.data.user,
           token: res.data.token
         })
-        localStorage.setItem('auth', res.data)
+        localStorage.setItem('auth', JSON.stringify(res.data))
         navigate('/')
       }else{
         navigate('/signin')

@@ -10,7 +10,7 @@ const Register = () => {
   const navigate = useNavigate()
     const handleSubmit = async (e) =>{
       e.preventDefault();
-      const res = await axios.post('http://localhost:3001/api/register', {name, email, password})
+      const res = await axios.post('http://localhost:4000/api/register', {name, email, password})
       if(res.data.success){
         navigate('/signin')
       }

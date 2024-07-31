@@ -1,14 +1,17 @@
 import React,{useState, useEffect} from 'react'
-import Input from './Input'
+import Input from './Input';
 import { useAuth } from '../context/auth'
 const Chat = () => {
 
 // Use State HOOKS -------------------------------------------------------
   const [text,setText] = useState('')
   const [message,setMessage] = useState('')
-  const [chat, setChat] = useState('')
   const [auth, setAuth] = useAuth()
-//------------------- Onclick Button Function -------------------------------
+// ---------------------- SOCKET IO INITIALIZATRION CLIENT SIDE ---------------------
+
+
+
+  //------------------- Onclick Button Function -------------------------------
 var array = []
 const sendMessage = () =>{
   const Text = document.getElementById('messageInput').value
@@ -35,7 +38,7 @@ useEffect(()=>{
   return (
     <div className='chatContainer'>
       <main className='chatDisplay' id='chatDisplay'>
-        {JSON.stringify(auth)}
+        {JSON.stringify(auth,null,4)}
         {message}
       </main>
       <div className="inputContainer">
