@@ -8,7 +8,7 @@ const Input = (
         placeholder = '',
         label = '',
         name = '',
-        id = '',
+        id,
         value='',
         labelName='',
         onClick = function(){},

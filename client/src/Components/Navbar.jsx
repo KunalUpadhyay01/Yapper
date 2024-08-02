@@ -23,7 +23,7 @@ const Navbar = () => {
           Logout
           </NavLink>
         </>)
-          : (window.location.href== 'http://localhost:3000/signin'? (<NavLink to='/register'className='register navComponent'>
+          : (window.location.href==='http://localhost:3000/signin'? (<NavLink to='/register'className='register navComponent'>
                 
                 </NavLink>) : <NavLink to='/signin'className='register navComponent'>
                 

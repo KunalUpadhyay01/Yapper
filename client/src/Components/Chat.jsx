@@ -1,6 +1,7 @@
 import React,{useState, useEffect} from 'react'
 import Input from './Input';
 import { useAuth } from '../context/auth'
+import { io } from "socket.io-client";
 const Chat = () => {
 
 // Use State HOOKS -------------------------------------------------------
@@ -8,11 +9,9 @@ const Chat = () => {
   const [message,setMessage] = useState('')
   const [auth, setAuth] = useAuth()
 // ---------------------- SOCKET IO INITIALIZATRION CLIENT SIDE ---------------------
-
-
-
+  // const socket = io();
   //------------------- Onclick Button Function -------------------------------
-var array = []
+
 const sendMessage = () =>{
   const Text = document.getElementById('messageInput').value
   setMessage(Text)

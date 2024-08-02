@@ -2,12 +2,10 @@ import React from 'react'
 import Navbar from '../Components/Navbar'
 import Sidebar from '../Components/Sidebar'
 import Chat from '../Components/Chat'
-import { useNavigate } from 'react-router-dom'
 import { useAuth } from '../context/auth'
 import Login from './Login'
 const Home = () => {
-  const [auth, setAuth] = useAuth();
-  const navigate = useNavigate()
+  const [auth] = useAuth();
   return (<>
     {
       !auth.user ? <Login />:(
